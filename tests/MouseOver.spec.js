@@ -32,7 +32,7 @@ test.skip('Mouse Right Click', async ({page})=>{
 
 });
 
-test('Double Click', async ({page})=>{
+test.skip('Double Click', async ({page})=>{
 
     await page.goto('https://testautomationpractice.blogspot.com/');
 
@@ -51,4 +51,18 @@ test('Double Click', async ({page})=>{
 
     await page.waitForTimeout(5000);
 
+});
+
+test('Drag and Drop', async ({page})=>{
+
+    await page.goto('https://testautomationpractice.blogspot.com/');
+
+    // address
+    const source = await page.locator("//div[@id='draggable']");
+    const destination = await page.locator("//div[@id='droppable']");
+
+    //Drag and drop
+    await source.dragTo(destination);
+
+    await page.waitForTimeout(5000);
 });
