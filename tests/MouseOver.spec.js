@@ -53,7 +53,7 @@ test.skip('Double Click', async ({page})=>{
 
 });
 
-test('Drag and Drop', async ({page})=>{
+test.skip('Drag and Drop', async ({page})=>{
 
     await page.goto('https://testautomationpractice.blogspot.com/');
 
@@ -63,6 +63,32 @@ test('Drag and Drop', async ({page})=>{
 
     //Drag and drop
     await source.dragTo(destination);
+
+    await page.waitForTimeout(5000);
+});
+
+test('Handle keyboard action', async ({page})=>{
+
+    await page.goto('https://platform.text.com/tools/diff-checker');
+    await page.waitForTimeout(5000);
+
+    await page.type("//body/main[@class='main']/section/div[@class='checker_checkContainer__DgX01']/div[@class='tool-box_wrapper__bvfUv']/div[@class='tool-box_content__93b_y']/div[@class='checker_editors___imAg']/div[1]/div[1]", 'hello');
+
+    await page.waitForTimeout(5000);
+    //Ctrl+A
+
+    await page.keyboard.press('Meta+A'); //Meta means text copy
+    //Ctrl+C
+
+    await page.keyboard.press('Meta+C');
+    //TAB
+
+    await page.keyboard.down('Tab');
+    await page.keyboard.up('Tab');
+
+    //Ctrl+V
+
+    await page.keyboard.press('Meta+V');
 
     await page.waitForTimeout(5000);
 });
